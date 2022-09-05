@@ -6,7 +6,6 @@ import { randomUUID } from 'crypto';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import setupBrowser from '../../utils/setupBrowser';
-import getBaseURL from '../../utils/getBaseUrl';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 

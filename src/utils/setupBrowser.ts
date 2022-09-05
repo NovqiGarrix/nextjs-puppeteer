@@ -1,29 +1,27 @@
 // src/utils/setupBrowser.ts
 
-import chromium from 'chrome-aws-lambda';
+import { LaunchOptions } from 'puppeteer';
 
-// @ts-ignore
-import puppeteer from 'puppeteer-core';
+// Puppeteer extra is a wrapper around puppeteer,
+import puppeteer from 'puppeteer-extra';
 
-async function setupBrowser() {
-    const options = process.env.AWS_REGION
-        ? {
-            args: chromium.args,
-            executablePath: await chromium.executablePath,
-            headless: chromium.headless
-        }
-        : {
-            args: [],
-            executablePath:
-                process.platform === 'win32'
-                    ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
-                    : process.platform === 'linux'
-                        ? '/usr/bin/google-chrome'
-                        : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
-        };
+// Stealth plugin to make puppeteer look like a real browser
+import StealthPlugin from 'puppeteer-extra-plugin-stealth';
 
+// Use the plugin
+puppeteer.use(StealthPlugin());
+
+async function setupBrowser(options?: LaunchOptions) {
     // Create the browser instance
-    const browser = await puppeteer.launch(options);
+    const browser = await puppeteer.launch({
+        ...options,
+        args: [
+            "--no-sandbox",
+            "--disable-setuid-sandbox",
+            "--window-size=1920,1080"
+        ],
+        headless: true
+    });
 
     // Use built-in page from the browser instance
     const page = (await browser.pages())[0];
