@@ -1,20 +1,20 @@
 // src/utils/setupBrowser.ts
 
-import { LaunchOptions } from 'puppeteer';
-
-// Puppeteer extra is a wrapper around puppeteer,
-import puppeteer from 'puppeteer-extra';
+import type { LaunchOptions } from 'puppeteer';
+import chromium from 'chrome-aws-lambda';
 
 async function setupBrowser(options?: LaunchOptions) {
     // Create the browser instance
-    const browser = await puppeteer.launch({
+    const browser = await chromium.puppeteer.launch({
         ...options,
         args: [
-            "--no-sandbox",
-            "--disable-setuid-sandbox",
-            "--window-size=1920,1080"
+            ...chromium.args,
+            "--hide-scrollbars", "--disable-web-security"
         ],
-        headless: true
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath,
+        headless: true,
+        ignoreHTTPSErrors: true
     });
 
     // Use built-in page from the browser instance
