@@ -4,9 +4,10 @@ import { Fragment, FunctionComponent } from "react";
 
 import { FaceFrownIcon, BoltIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
-import { IFetchingState } from "../../types";
-import getDomain from "../../utils/getDomain";
 import Link from "next/link";
+
+import { IFetchingState } from "../types";
+import getDomain from "../utils/getDomain";
 
 interface IResultComponentProps {
   state: IFetchingState;

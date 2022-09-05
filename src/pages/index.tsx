@@ -5,7 +5,7 @@ import { FormEvent, useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
-import ResultComponent from "./components/ResultComponent";
+import ResultComponent from "../components/ResultComponent";
 import { IFetchingState } from "../types";
 
 const fetchingStateInit: IFetchingState = {
