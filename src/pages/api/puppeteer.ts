@@ -66,7 +66,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         console.error(error.message);
 
         // Never send the error message to the client. It's a security risk.
-        return res.status(500).send({ msg: "An error occured. Please try again!" });
+        return res.status(500).send({ msg: "An error occured. Please try again!", error: error.message });
     }
 
 }
