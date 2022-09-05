@@ -5,12 +5,6 @@ import { LaunchOptions } from 'puppeteer';
 // Puppeteer extra is a wrapper around puppeteer,
 import puppeteer from 'puppeteer-extra';
 
-// Stealth plugin to make puppeteer look like a real browser
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
-
-// Use the plugin
-puppeteer.use(StealthPlugin());
-
 async function setupBrowser(options?: LaunchOptions) {
     // Create the browser instance
     const browser = await puppeteer.launch({
