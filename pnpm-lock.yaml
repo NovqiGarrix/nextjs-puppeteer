@@ -7,12 +7,12 @@ specifiers:
   '@types/react': 18.0.18
   '@types/valid-url': ^1.0.3
   autoprefixer: ^10.4.8
-  chrome-aws-lambda: 7.0.0
+  chrome-aws-lambda: ^8.0.2
   eslint: '8'
   eslint-config-next: 12.2.5
   next: 12.2.5
   postcss: ^8.4.16
-  puppeteer-core: 7.1.0
+  puppeteer-core: ^8.0.0
   react: 18.2.0
   react-dom: 18.2.0
   tailwindcss: ^3.1.8
@@ -21,9 +21,9 @@ specifiers:
 
 dependencies:
   '@heroicons/react': 2.0.10_react@18.2.0
-  chrome-aws-lambda: 7.0.0_puppeteer-core@7.1.0
+  chrome-aws-lambda: 8.0.2_puppeteer-core@8.0.0
   next: 12.2.5_biqbaboplfbrettd7655fr4n2y
-  puppeteer-core: 7.1.0
+  puppeteer-core: 8.0.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   valid-url: 1.0.9
@@ -619,14 +619,14 @@ packages:
     resolution: {integrity: sha512-jJ0bqzaylmJtVnNgzTeSOs8DPavpbYgEr/b0YL8/2GO3xJEhInFmhKMUnEJQjZumK7KXGFhUy89PrsJWlakBVg==}
     dev: false
 
-  /chrome-aws-lambda/7.0.0_puppeteer-core@7.1.0:
-    resolution: {integrity: sha512-GbYXRPYtaA0DLfmxQpuZw1SKTP7rOA4UXiATwiFRJ4Ea6PBYSzqK0YjS7B2WimUBe//ybPfNpPIs8A3WpF0xvA==}
+  /chrome-aws-lambda/8.0.2_puppeteer-core@8.0.0:
+    resolution: {integrity: sha512-a4VEX6DknxISPqGLksZa/JuEnjc4nLXaG0BMp5c9qERvJ/eBHPUJ7oCRQQC+SxSxuxsEwxbBj2RBlCQbivnihg==}
     engines: {node: '>= 10.16'}
     peerDependencies:
-      puppeteer-core: 7.0.x
+      puppeteer-core: ^8.0.0
     dependencies:
       lambdafs: 2.1.1
-      puppeteer-core: 7.1.0
+      puppeteer-core: 8.0.0
     dev: false
 
   /color-convert/2.0.1:
@@ -730,8 +730,8 @@ packages:
       minimist: 1.2.6
     dev: true
 
-  /devtools-protocol/0.0.847576:
-    resolution: {integrity: sha512-0M8kobnSQE0Jmly7Mhbeq0W/PpZfnuK+WjN2ZRVPbGqYwCHCioAVp84H0TcLimgECcN5H976y5QiXMGBC9JKmg==}
+  /devtools-protocol/0.0.854822:
+    resolution: {integrity: sha512-xd4D8kHQtB0KtWW0c9xBZD5LVtm9chkMOfs/3Yn01RhT/sFIsVtzTtypfKoFfWBaL+7xCYLxjOLkhwPXaX/Kcg==}
     dev: false
 
   /didyoumean/1.2.2:
@@ -2006,12 +2006,12 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /puppeteer-core/7.1.0:
-    resolution: {integrity: sha512-2wjKs3L1rYuoVNNtRR/GbAGjbt6LF8DRUxcg/UoCQZrzjfppWlrIqiHRF5uBzJk+Nc0w7ZkvVzKQCvB5PFqFdA==}
+  /puppeteer-core/8.0.0:
+    resolution: {integrity: sha512-kRTiGh42+4eiw9tl489p//8Zpg3LWmz0K3mOpv0qj5PsCV7jE43SLIi0E50suLh8OghXsFhJFoE98vEmXUnDew==}
     engines: {node: '>=10.18.1'}
     dependencies:
       debug: 4.3.4
-      devtools-protocol: 0.0.847576
+      devtools-protocol: 0.0.854822
       extract-zip: 2.0.1
       https-proxy-agent: 5.0.1
       node-fetch: 2.6.7
