@@ -1,21 +1,29 @@
 // src/utils/setupBrowser.ts
 
-import type { LaunchOptions } from 'puppeteer';
 import chromium from 'chrome-aws-lambda';
 
-async function setupBrowser(options?: LaunchOptions) {
+// @ts-ignore
+import puppeteer from 'puppeteer-core';
+
+async function setupBrowser() {
+    const options = process.env.AWS_REGION
+        ? {
+            args: chromium.args,
+            executablePath: await chromium.executablePath,
+            headless: chromium.headless
+        }
+        : {
+            args: [],
+            executablePath:
+                process.platform === 'win32'
+                    ? 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe'
+                    : process.platform === 'linux'
+                        ? '/usr/bin/google-chrome'
+                        : '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'
+        };
+
     // Create the browser instance
-    const browser = await chromium.puppeteer.launch({
-        ...options,
-        args: [
-            ...chromium.args,
-            "--hide-scrollbars", "--disable-web-security"
-        ],
-        defaultViewport: chromium.defaultViewport,
-        executablePath: await chromium.executablePath,
-        headless: true,
-        ignoreHTTPSErrors: true
-    });
+    const browser = await puppeteer.launch(options);
 
     // Use built-in page from the browser instance
     const page = (await browser.pages())[0];
