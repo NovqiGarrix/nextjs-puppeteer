@@ -33,8 +33,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
                 // Create the screenshot folder if it doesn't exist
                 const folderPath = `./public/screenshots`;
-                if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
-
                 // Store the filepath to a variable
                 const filePath = `${folderPath}/${filename}.jpeg`;
 
