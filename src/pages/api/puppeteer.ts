@@ -33,7 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const filename = randomUUID();
 
                 // Create the screenshot folder if it doesn't exist
-                const folderPath = `screenshots`;
+                const folderPath = `./public/screenshots`;
                 if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
 
                 // Store the filepath to a variable
@@ -51,11 +51,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 // Close the browser after taking the screenshot
                 await browser.close();
 
-                const BASE_URL = getBaseURL();
-                console.log(`${BASE_URL}/${filePath}`);
-
                 // Return the response of the screenshot URL
-                return res.send({ data: `${BASE_URL}/${filePath}` });
+                return res.send({ data: filePath.replace("./public", "") });
             }
 
             default:
