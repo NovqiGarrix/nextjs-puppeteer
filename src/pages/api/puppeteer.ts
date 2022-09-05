@@ -6,6 +6,7 @@ import { randomUUID } from 'crypto';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import setupBrowser from '../../utils/setupBrowser';
+import getBaseURL from '../../utils/getBaseUrl';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -32,7 +33,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 const filename = randomUUID();
 
                 // Create the screenshot folder if it doesn't exist
-                const folderPath = `./public/screenshots`;
+                const folderPath = `screenshots`;
+                if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
+
                 // Store the filepath to a variable
                 const filePath = `${folderPath}/${filename}.jpeg`;
 
@@ -48,11 +51,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 // Close the browser after taking the screenshot
                 await browser.close();
 
-                // Remove the public folder from the filepath
-                const imageSrcSafe = filePath.replace("./public", "");
+                const BASE_URL = getBaseURL();
+                console.log(`${BASE_URL}/${filePath}`);
 
                 // Return the response of the screenshot URL
-                return res.send({ data: imageSrcSafe });
+                return res.send({ data: `${BASE_URL}/${filePath}` });
             }
 
             default:
